@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ZeroHungerNGOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admins">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="collection_requests">
+    <Key>
+      <PropertyRef Name="collection_request_id" />
+    </Key>
+    <Property Name="collection_request_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="restaurant_id" Type="int" Nullable="false" />
+    <Property Name="request_date" Type="date" Nullable="false" />
+    <Property Name="maximum_preservation_time" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employee_assignments">
+    <Key>
+      <PropertyRef Name="assignment_id" />
+    </Key>
+    <Property Name="assignment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="employee_id" Type="int" Nullable="false" />
+    <Property Name="collection_request_id" Type="int" Nullable="false" />
+    <Property Name="assignment_date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employees">
+    <Key>
+      <PropertyRef Name="employee_id" />
+    </Key>
+    <Property Name="employee_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="employee_name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="contact_number" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="food_items">
+    <Key>
+      <PropertyRef Name="food_item_id" />
+    </Key>
+    <Property Name="food_item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="collection_request_id" Type="int" Nullable="false" />
+    <Property Name="food_type" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="restaurants">
+    <Key>
+      <PropertyRef Name="restaurant_id" />
+    </Key>
+    <Property Name="restaurant_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="restaurant_name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="contact_number" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__collectio__resta__1273C1CD">
+    <End Role="restaurants" Type="Self.restaurants" Multiplicity="1" />
+    <End Role="collection_requests" Type="Self.collection_requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="restaurants">
+        <PropertyRef Name="restaurant_id" />
+      </Principal>
+      <Dependent Role="collection_requests">
+        <PropertyRef Name="restaurant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employee___colle__1B0907CE">
+    <End Role="collection_requests" Type="Self.collection_requests" Multiplicity="1" />
+    <End Role="employee_assignments" Type="Self.employee_assignments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="collection_requests">
+        <PropertyRef Name="collection_request_id" />
+      </Principal>
+      <Dependent Role="employee_assignments">
+        <PropertyRef Name="collection_request_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employee___emplo__1A14E395">
+    <End Role="employees" Type="Self.employees" Multiplicity="1" />
+    <End Role="employee_assignments" Type="Self.employee_assignments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="employee_id" />
+      </Principal>
+      <Dependent Role="employee_assignments">
+        <PropertyRef Name="employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__food_item__colle__15502E78">
+    <End Role="collection_requests" Type="Self.collection_requests" Multiplicity="1" />
+    <End Role="food_items" Type="Self.food_items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="collection_requests">
+        <PropertyRef Name="collection_request_id" />
+      </Principal>
+      <Dependent Role="food_items">
+        <PropertyRef Name="collection_request_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ZeroHungerNGOModelStoreContainer">
+    <EntitySet Name="admins" EntityType="Self.admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="collection_requests" EntityType="Self.collection_requests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employee_assignments" EntityType="Self.employee_assignments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="food_items" EntityType="Self.food_items" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="restaurants" EntityType="Self.restaurants" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__collectio__resta__1273C1CD" Association="Self.FK__collectio__resta__1273C1CD">
+      <End Role="restaurants" EntitySet="restaurants" />
+      <End Role="collection_requests" EntitySet="collection_requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employee___colle__1B0907CE" Association="Self.FK__employee___colle__1B0907CE">
+      <End Role="collection_requests" EntitySet="collection_requests" />
+      <End Role="employee_assignments" EntitySet="employee_assignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employee___emplo__1A14E395" Association="Self.FK__employee___emplo__1A14E395">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="employee_assignments" EntitySet="employee_assignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__food_item__colle__15502E78" Association="Self.FK__food_item__colle__15502E78">
+      <End Role="collection_requests" EntitySet="collection_requests" />
+      <End Role="food_items" EntitySet="food_items" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

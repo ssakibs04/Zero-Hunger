@@ -1,0 +1,42 @@
+﻿@model IEnumerable<NGO_Zerohunger.Models.employee>
+
+@{
+    ViewBag.Title = "Employees";
+}
+
+<h2>Employees</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddEmployees", "Admin", new { }, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Employee Name")
+        </th>
+        <th>
+            @Html.DisplayName("Contact Number")
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.employee_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact_number)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "EditEmployees", new { id = item.employee_id }, new { @class = "btn btn-primary" }) |
+                @*@Html.ActionLink("Details", "ReadEmployees", new { id = item.employee_id }, new { @class = "btn btn-success" }) |*@
+                @Html.ActionLink("Delete", "DeleteEmployees", new { id = item.employee_id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
