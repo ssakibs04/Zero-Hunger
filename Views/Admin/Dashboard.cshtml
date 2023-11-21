@@ -3,7 +3,25 @@
     ViewBag.Title = "Dashboard";
 }
 
-<h2>Dashboard</h2>
+<h2>Admin Dashboard</h2>
 
-<h2>@ViewBag.Message</h2>
+<table class="table">
+    <tr>
+        <th>Collection Request Id</th>
+        <th>Restaurant ID</th>
+        <th>Request Date</th>
+        <th>Maximum Preservation Time</th>
+        <th>Assigned Employee</th>
+        <th>Status</th>
+    </tr>
+    @foreach (var data in Model)
+    {
+        <tr>
+            <td>@data.collection_request_id</td>
+            <td>@data.restaurant_id</td>
+            <td>@data.request_data</td>
+            <td>@data.maximum_preservation_time</td>
+        </tr>
+    }
 
+</table>

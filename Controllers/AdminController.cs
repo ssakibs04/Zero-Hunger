@@ -7,15 +7,20 @@ using System.Web.Mvc;
 
 namespace NGO_Zerohunger.Controllers
 {
+
     public class AdminController : Controller
     {
+
 		ZeroHungerNGOEntities db =new ZeroHungerNGOEntities();
-        // GET: Admin
+		// GET: Admin
+		
         public ActionResult Dashboard()
         
 			{
+			 var ZeroHungerNGOEntities  = new ZeroHungerNGOEntities();
+			var collection_Requests = db.collection_requests;
 			ViewBag.Message = "Welcome to the Admin Dashboard!";
-			return View();
+			return View(Request);
 			}
 			[HttpGet]
 			public ActionResult Employees()
