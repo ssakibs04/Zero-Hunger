@@ -1,6 +1,8 @@
 ﻿
 @{
     ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <h2>Admin Dashboard</h2>
@@ -14,7 +16,7 @@
         <th>Assigned Employee</th>
         <th>Status</th>
     </tr>
-    @foreach (var data in Model)
+    @*@foreach (var data in Model)
     {
         <tr>
             <td>@data.collection_request_id</td>
@@ -22,6 +24,6 @@
             <td>@data.request_data</td>
             <td>@data.maximum_preservation_time</td>
         </tr>
-    }
+    }*@
 
 </table>

@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Employees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <h2>Employees</h2>
@@ -17,6 +19,10 @@
         <th>
             @Html.DisplayName("Contact Number")
         </th>
+        <th>
+            @Html.DisplayName("Email")
+        </th>
+     
 
         <th></th>
     </tr>
@@ -29,11 +35,14 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.contact_number)
-            </td>
+            </td> 
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td> 
 
             <td>
                 @Html.ActionLink("Edit", "EditEmployees", new { id = item.employee_id }, new { @class = "btn btn-primary" }) |
-                @*@Html.ActionLink("Details", "ReadEmployees", new { id = item.employee_id }, new { @class = "btn btn-success" }) |*@
+                @Html.ActionLink("Password", "ReadEmployees", new { id = item.employee_id }, new { @class = "btn btn-success" }) |
                 @Html.ActionLink("Delete", "DeleteEmployees", new { id = item.employee_id }, new { @class = "btn btn-danger" })
             </td>
         </tr>

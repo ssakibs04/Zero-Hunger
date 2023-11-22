@@ -97,15 +97,15 @@ namespace NGO_Zerohunger.Controllers
 				return RedirectToAction("Employees");
 			}
 
-			//[HttpGet]
-			//public ActionResult ReadEmployees(int id)
-			//{
-			//	var db = new ZeroHungerNGOEntities();
-			//	employee read = db.employees.SingleOrDefault(x => x.employee_id == id);
+			[HttpGet]
+			public ActionResult EmpPss(int id  )
+			{
+				var db = new ZeroHungerNGOEntities();
+				employee read = db.employees.SingleOrDefault(x => x.employee_id ==id);
 
 
-			//	return View(read);
-			//}
+				return View(read);
+			}
 
 
 			//restaurant 
@@ -126,11 +126,15 @@ namespace NGO_Zerohunger.Controllers
 			[HttpPost]
 			public ActionResult AddRestaurants(restaurant res)
 			{
-				var db = new ZeroHungerNGOEntities();
+			if (ModelState.IsValid)
+			{
+var db = new ZeroHungerNGOEntities();
 				db.restaurants.Add(res);
 				db.SaveChanges();
 				return RedirectToAction("Restaurants");
-
+			}
+				
+			else { return View(); }
 			}
 			[HttpGet]
 			public ActionResult DeleteRestaurant(int id)
@@ -146,7 +150,7 @@ namespace NGO_Zerohunger.Controllers
 				restaurant del = db.restaurants.SingleOrDefault(x => x.restaurant_id == id);
 				db.restaurants.Remove(del);
 				db.SaveChanges();
-				return RedirectToAction("Restaurants", "Restaurant");
+				return RedirectToAction("Restaurants", "Admin");
 			}
 			[HttpGet]
 			public ActionResult EditRestaurant(int id)
@@ -185,16 +189,16 @@ namespace NGO_Zerohunger.Controllers
 			}
 
 
-			//[HttpGet]
+			[HttpGet]
 
-			//public ActionResult DetailsRestaurant(int id)
-			//{
-			//	var db = new ZeroHungerNGOEntities();
-			//	restaurant read = db.restaurants.SingleOrDefault(x => x.restaurant_id == id);
+			public ActionResult Respass(int id)
+			{
+				var db = new ZeroHungerNGOEntities();
+				restaurant read = db.restaurants.SingleOrDefault(x => x.restaurant_id == id);
 
 
-			//	return View(read);
-			//}
+				return View(read);
+			}
 
 
 		}

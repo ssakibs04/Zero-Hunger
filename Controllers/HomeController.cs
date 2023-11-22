@@ -74,7 +74,7 @@ namespace NGO_Zerohunger.Controllers
 						Session["employeeName"] = emp.employee_name;
 						Session["employeeID"] = emp.employee_id;
 						
-						return RedirectToAction("Dashboard", "Employee");
+						return RedirectToAction("EmpDashboard", "Employee");
 					}
 
 					else if (admin != null)

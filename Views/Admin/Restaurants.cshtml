@@ -2,12 +2,14 @@
 
 @{
     ViewBag.Title = "Restaurants";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <h2>Restaurants</h2>
 
 <p>
-    @Html.ActionLink("Create New", "AddRestaurant", "Admin", new { }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Create New", "AddRestaurants", "Admin", new { }, new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
@@ -37,11 +39,10 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "EditRestaurant", "Restaurant", new { id = item.restaurant_id }, new { @class = "btn btn-primary" }) |
-                @*@Html.ActionLink("Details", "DetailsRestaurant", new { id = item.restaurant_id }, new { @class = "btn btn-primary" }) |*@
+                @Html.ActionLink("Password", "ResPass", new { id = item.restaurant_id }, new { @class = "btn btn-primary" }) |
                 @Html.ActionLink("Delete", "DeleteRestaurant", new { id = item.restaurant_id }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }
 
-</table>
 </table>

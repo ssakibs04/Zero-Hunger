@@ -11,21 +11,27 @@ namespace NGO_Zerohunger.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class restaurant
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class restaurant
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public restaurant()
         {
             this.collection_requests = new HashSet<collection_requests>();
         }
-    
+        [Required]
         public int restaurant_id { get; set; }
-        public string restaurant_name { get; set; }
-        public string address { get; set; }
-        public string contact_number { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
+		[Required]
+		public string restaurant_name { get; set; }
+		[Required]
+		public string address { get; set; }
+		[Required]
+		public string contact_number { get; set; }
+		[Required]
+		public string email { get; set; }
+		[Required]
+		public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<collection_requests> collection_requests { get; set; }
