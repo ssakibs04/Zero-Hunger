@@ -1,0 +1,44 @@
+﻿@model IEnumerable<NGO_Zerohunger.Models.collection_requests>
+
+@{
+    ViewBag.Title = "Assignment";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<h2>Assignments</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Request Time")
+        </th>
+        <th>
+            @Html.DisplayName("Restaurant name")
+        </th>
+        <th>
+            @Html.DisplayName("Action")
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.request_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.restaurant.restaurant_name)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.collection_request_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.collection_request_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.collection_request_id })
+        </td>
+    </tr>
+}
+
+</table>

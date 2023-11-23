@@ -1,0 +1,20 @@
+﻿@model NGO_Zerohunger.Models.collection_requests
+
+@{
+    ViewBag.Title = "Assign";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Assign</h2>
+
+<h4>Employee</h4>
+<form action="" method="post">
+    <input type="number" name="id" value=@ViewBag.id hidden />
+    <select class="form-control" name="employee">
+        <option value="" selected disabled>Select Employee</option>
+        
+    </select>
+
+    <div>
+        @Html.ActionLink("Back to List", "Dashboard")
+    </div>

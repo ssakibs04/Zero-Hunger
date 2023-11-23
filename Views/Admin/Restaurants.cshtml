@@ -38,9 +38,9 @@
                 @Html.DisplayFor(modelItem => item.contact_number)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditRestaurant", "Restaurant", new { id = item.restaurant_id }, new { @class = "btn btn-primary" }) |
-                @Html.ActionLink("Password", "ResPass", new { id = item.restaurant_id }, new { @class = "btn btn-primary" }) |
-                @Html.ActionLink("Delete", "DeleteRestaurant", new { id = item.restaurant_id }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Edit", "EditRestaurant", "Admin", new { id = item.restaurant_id }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Password", "ResPass","Admin", new { id = item.restaurant_id }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Delete", "DeleteRestaurant","Admin", new { id = item.restaurant_id }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

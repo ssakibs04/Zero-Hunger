@@ -15,6 +15,14 @@ namespace NGO_Zerohunger.Controllers
         {
             return View();
         }
+
+        public ActionResult Assignment()
+        {
+            ZeroHungerNGOEntities db = new ZeroHungerNGOEntities();
+
+            return View(db.collection_requests.ToList());
+
+        }
    
 		public ActionResult Logout()
 		{

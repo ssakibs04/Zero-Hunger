@@ -28,9 +28,9 @@ namespace NGO_Zerohunger.Models
         public virtual DbSet<collection_requests> collection_requests { get; set; }
         public virtual DbSet<employee_assignments> employee_assignments { get; set; }
         public virtual DbSet<employee> employees { get; set; }
-        public virtual DbSet<food_items> food_items { get; set; }
         public virtual DbSet<restaurant> restaurants { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<admin> admins { get; set; }
+        public virtual DbSet<restaurant_food> restaurant_foods { get; set; }
     }
 }

@@ -4,6 +4,7 @@
     <EntitySetMapping Name="collection_requests">
       <EntityTypeMapping TypeName="ZeroHungerNGOModel.collection_requests">
         <MappingFragment StoreEntitySet="collection_requests">
+          <ScalarProperty Name="assignEmp" ColumnName="assignEmp" />
           <ScalarProperty Name="collection_request_id" ColumnName="collection_request_id" />
           <ScalarProperty Name="restaurant_id" ColumnName="restaurant_id" />
           <ScalarProperty Name="request_date" ColumnName="request_date" />
@@ -29,16 +30,6 @@
           <ScalarProperty Name="employee_name" ColumnName="employee_name" />
           <ScalarProperty Name="contact_number" ColumnName="contact_number" />
           <ScalarProperty Name="email" ColumnName="email" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="food_items">
-      <EntityTypeMapping TypeName="ZeroHungerNGOModel.food_items">
-        <MappingFragment StoreEntitySet="food_items">
-          <ScalarProperty Name="food_item_id" ColumnName="food_item_id" />
-          <ScalarProperty Name="collection_request_id" ColumnName="collection_request_id" />
-          <ScalarProperty Name="food_type" ColumnName="food_type" />
-          <ScalarProperty Name="quantity" ColumnName="quantity" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -72,6 +63,16 @@
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="restaurant_food">
+      <EntityTypeMapping TypeName="ZeroHungerNGOModel.restaurant_food">
+        <MappingFragment StoreEntitySet="restaurant_food">
+          <ScalarProperty Name="food_name" ColumnName="food_name" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="restaurant_id" ColumnName="restaurant_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

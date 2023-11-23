@@ -1,0 +1,47 @@
+﻿@model IEnumerable<NGO_Zerohunger.Models.restaurant_food>
+
+@{
+    ViewBag.Title = "Donate";
+    Layout = "~/Views/Shared/_RestaurantLayout.cshtml";
+}
+
+<h2>Donate</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddFood")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Food Name")
+        </th>
+        <th>
+            @Html.DisplayName("Quantity")
+        </th>
+        <th>
+            @Html.DisplayName("Restaurant ID")
+        </th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.food_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.restaurant_id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

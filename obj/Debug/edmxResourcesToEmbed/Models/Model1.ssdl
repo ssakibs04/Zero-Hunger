@@ -17,6 +17,7 @@
     <Property Name="restaurant_id" Type="int" Nullable="false" />
     <Property Name="request_date" Type="date" Nullable="false" />
     <Property Name="maximum_preservation_time" Type="int" Nullable="false" />
+    <Property Name="assignEmp" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="employee_assignments">
     <Key>
@@ -37,14 +38,14 @@
     <Property Name="email" Type="nvarchar" MaxLength="255" />
     <Property Name="password" Type="nvarchar" MaxLength="255" />
   </EntityType>
-  <EntityType Name="food_items">
+  <EntityType Name="restaurant_food">
     <Key>
-      <PropertyRef Name="food_item_id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="food_item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="collection_request_id" Type="int" Nullable="false" />
-    <Property Name="food_type" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="restaurant_id" Type="int" Nullable="false" />
     <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="food_name" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <EntityType Name="restaurants">
     <Key>
@@ -103,15 +104,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__food_item__colle__15502E78">
-    <End Role="collection_requests" Type="Self.collection_requests" Multiplicity="1" />
-    <End Role="food_items" Type="Self.food_items" Multiplicity="*" />
+  <Association Name="FK__restauran__resta__5CD6CB2B">
+    <End Role="restaurants" Type="Self.restaurants" Multiplicity="1" />
+    <End Role="restaurant_food" Type="Self.restaurant_food" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="collection_requests">
-        <PropertyRef Name="collection_request_id" />
+      <Principal Role="restaurants">
+        <PropertyRef Name="restaurant_id" />
       </Principal>
-      <Dependent Role="food_items">
-        <PropertyRef Name="collection_request_id" />
+      <Dependent Role="restaurant_food">
+        <PropertyRef Name="restaurant_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -120,7 +121,7 @@
     <EntitySet Name="collection_requests" EntityType="Self.collection_requests" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="employee_assignments" EntityType="Self.employee_assignments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="food_items" EntityType="Self.food_items" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="restaurant_food" EntityType="Self.restaurant_food" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="restaurants" EntityType="Self.restaurants" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__collectio__resta__1273C1CD" Association="Self.FK__collectio__resta__1273C1CD">
@@ -135,9 +136,9 @@
       <End Role="employees" EntitySet="employees" />
       <End Role="employee_assignments" EntitySet="employee_assignments" />
     </AssociationSet>
-    <AssociationSet Name="FK__food_item__colle__15502E78" Association="Self.FK__food_item__colle__15502E78">
-      <End Role="collection_requests" EntitySet="collection_requests" />
-      <End Role="food_items" EntitySet="food_items" />
+    <AssociationSet Name="FK__restauran__resta__5CD6CB2B" Association="Self.FK__restauran__resta__5CD6CB2B">
+      <End Role="restaurants" EntitySet="restaurants" />
+      <End Role="restaurant_food" EntitySet="restaurant_food" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

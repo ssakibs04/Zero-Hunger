@@ -12,13 +12,13 @@ namespace NGO_Zerohunger.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class food_items
+    public partial class restaurant_food
     {
-        public int food_item_id { get; set; }
-        public int collection_request_id { get; set; }
-        public string food_type { get; set; }
+        public int id { get; set; }
+        public int restaurant_id { get; set; }
         public int quantity { get; set; }
+        public string food_name { get; set; }
     
-        public virtual collection_requests collection_requests { get; set; }
+        public virtual restaurant restaurant { get; set; }
     }
 }

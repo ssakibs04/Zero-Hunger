@@ -41,8 +41,8 @@
             </td> 
 
             <td>
-                @Html.ActionLink("Edit", "EditEmployees", new { id = item.employee_id }, new { @class = "btn btn-primary" }) |
-                @Html.ActionLink("Password", "ReadEmployees", new { id = item.employee_id }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Edit", "EditEmployees","Admin", new { id = item.employee_id }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Password", "EmpPss", new { id = item.employee_id }, new { @class = "btn btn-success" }) |
                 @Html.ActionLink("Delete", "DeleteEmployees", new { id = item.employee_id }, new { @class = "btn btn-danger" })
             </td>
         </tr>

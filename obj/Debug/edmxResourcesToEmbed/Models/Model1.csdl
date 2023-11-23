@@ -10,7 +10,7 @@
     <Property Name="maximum_preservation_time" Type="Int32" Nullable="false" />
     <NavigationProperty Name="restaurant" Relationship="Self.FK__collectio__resta__1273C1CD" FromRole="collection_requests" ToRole="restaurants" />
     <NavigationProperty Name="employee_assignments" Relationship="Self.FK__employee___colle__1B0907CE" FromRole="collection_requests" ToRole="employee_assignments" />
-    <NavigationProperty Name="food_items" Relationship="Self.FK__food_item__colle__15502E78" FromRole="collection_requests" ToRole="food_items" />
+    <Property Name="assignEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="employee_assignments">
     <Key>
@@ -34,16 +34,6 @@
     <NavigationProperty Name="employee_assignments" Relationship="Self.FK__employee___emplo__1A14E395" FromRole="employees" ToRole="employee_assignments" />
     <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="food_items">
-    <Key>
-      <PropertyRef Name="food_item_id" />
-    </Key>
-    <Property Name="food_item_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="collection_request_id" Type="Int32" Nullable="false" />
-    <Property Name="food_type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="quantity" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="collection_requests" Relationship="Self.FK__food_item__colle__15502E78" FromRole="food_items" ToRole="collection_requests" />
-  </EntityType>
   <EntityType Name="restaurant">
     <Key>
       <PropertyRef Name="restaurant_id" />
@@ -55,6 +45,7 @@
     <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="collection_requests" Relationship="Self.FK__collectio__resta__1273C1CD" FromRole="restaurants" ToRole="collection_requests" />
     <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="restaurant_food" Relationship="ZeroHungerNGOModel.FK__restauran__resta__5CD6CB2B" FromRole="restaurant" ToRole="restaurant_food" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -90,18 +81,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__food_item__colle__15502E78">
-    <End Role="collection_requests" Type="Self.collection_requests" Multiplicity="1" />
-    <End Role="food_items" Type="Self.food_items" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="collection_requests">
-        <PropertyRef Name="collection_request_id" />
-      </Principal>
-      <Dependent Role="food_items">
-        <PropertyRef Name="collection_request_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__employee___emplo__1A14E395">
     <End Role="employees" Type="Self.employee" Multiplicity="1" />
     <End Role="employee_assignments" Type="Self.employee_assignments" Multiplicity="*" />
@@ -118,7 +97,6 @@
     <EntitySet Name="collection_requests" EntityType="Self.collection_requests" />
     <EntitySet Name="employee_assignments" EntityType="Self.employee_assignments" />
     <EntitySet Name="employees" EntityType="Self.employee" />
-    <EntitySet Name="food_items" EntityType="Self.food_items" />
     <EntitySet Name="restaurants" EntityType="Self.restaurant" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <AssociationSet Name="FK__collectio__resta__1273C1CD" Association="Self.FK__collectio__resta__1273C1CD">
@@ -129,15 +107,16 @@
       <End Role="collection_requests" EntitySet="collection_requests" />
       <End Role="employee_assignments" EntitySet="employee_assignments" />
     </AssociationSet>
-    <AssociationSet Name="FK__food_item__colle__15502E78" Association="Self.FK__food_item__colle__15502E78">
-      <End Role="collection_requests" EntitySet="collection_requests" />
-      <End Role="food_items" EntitySet="food_items" />
-    </AssociationSet>
     <AssociationSet Name="FK__employee___emplo__1A14E395" Association="Self.FK__employee___emplo__1A14E395">
       <End Role="employees" EntitySet="employees" />
       <End Role="employee_assignments" EntitySet="employee_assignments" />
     </AssociationSet>
     <EntitySet Name="admins" EntityType="ZeroHungerNGOModel.admin" />
+    <EntitySet Name="restaurant_food" EntityType="ZeroHungerNGOModel.restaurant_food" />
+    <AssociationSet Name="FK__restauran__resta__5CD6CB2B" Association="ZeroHungerNGOModel.FK__restauran__resta__5CD6CB2B">
+      <End Role="restaurant" EntitySet="restaurants" />
+      <End Role="restaurant_food" EntitySet="restaurant_food" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="admin">
     <Key>
@@ -148,4 +127,26 @@
     <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityType Name="restaurant_food">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="restaurant_id" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="restaurant" Relationship="ZeroHungerNGOModel.FK__restauran__resta__5CD6CB2B" FromRole="restaurant_food" ToRole="restaurant" />
+    <Property Name="food_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__restauran__resta__5CD6CB2B">
+    <End Type="ZeroHungerNGOModel.restaurant" Role="restaurant" Multiplicity="1" />
+    <End Type="ZeroHungerNGOModel.restaurant_food" Role="restaurant_food" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="restaurant">
+        <PropertyRef Name="restaurant_id" />
+      </Principal>
+      <Dependent Role="restaurant_food">
+        <PropertyRef Name="restaurant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

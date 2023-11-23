@@ -18,18 +18,16 @@ namespace NGO_Zerohunger.Models
         public collection_requests()
         {
             this.employee_assignments = new HashSet<employee_assignments>();
-            this.food_items = new HashSet<food_items>();
         }
     
         public int collection_request_id { get; set; }
         public int restaurant_id { get; set; }
         public System.DateTime request_date { get; set; }
         public int maximum_preservation_time { get; set; }
+        public string assignEmp { get; set; }
     
         public virtual restaurant restaurant { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<employee_assignments> employee_assignments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<food_items> food_items { get; set; }
     }
 }

@@ -15,26 +15,34 @@ namespace NGO_Zerohunger.Controllers
         {
             return View();
         }
+        
+      
+
         [HttpGet]
-        public ActionResult GiveReq() {
-        
-        return View();
-        
+        public ActionResult Donate()
+        {
+            ZeroHungerNGOEntities db = new ZeroHungerNGOEntities();
+            return View(db.restaurant_foods.ToList());
+            }
+        [HttpGet]
+
+        public ActionResult AddFood()
+        {
+			return View();
+
         }
         [HttpPost]
-
-        public ActionResult GiveReq(food_items item)
+        public ActionResult AddFood(restaurant_food add)
         {
-            if (ModelState.IsValid)
-            {
-                var db = new ZeroHungerNGOEntities();
-                db.food_items.Add(item);
-                db.SaveChanges();
-                return RedirectToAction("Dashboard", "Restaurant");
-            }
-
-            return View(item);
+            var db = new ZeroHungerNGOEntities();
+            db.restaurant_foods.Add(add);
+            db.SaveChanges();
+           
+            return RedirectToAction("Dashboard");
         }
+
+        
+
 			public ActionResult Logout()
 			{
 				Session.Clear();

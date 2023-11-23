@@ -13,16 +13,33 @@ namespace NGO_Zerohunger.Controllers
 
 		ZeroHungerNGOEntities db =new ZeroHungerNGOEntities();
 		// GET: Admin
-		
-        public ActionResult Dashboard()
-        
-			{
-			 var ZeroHungerNGOEntities  = new ZeroHungerNGOEntities();
-			var collection_Requests = db.collection_requests;
+
+		public ActionResult Dashboard()
+
+		{
+			var ZeroHungerNGOEntities = new ZeroHungerNGOEntities();
+
 			ViewBag.Message = "Welcome to the Admin Dashboard!";
-			return View(Request);
-			}
-			[HttpGet]
+			return View(db.collection_requests.ToList());
+		}
+		//ASSIGN EMPLOYEES	
+
+		[HttpGet]
+		public ActionResult Assign()
+		{ 
+			return View();
+		}
+		[HttpPost]
+		public ActionResult Assign(collection_requests id)
+		{
+			ZeroHungerNGOEntities db = new ZeroHungerNGOEntities();
+			db.collection_requests.Add(id);
+			db.SaveChanges();
+			return View();
+
+		}
+
+		[HttpGet]
 			public ActionResult Employees()
 			{
 				var db = new ZeroHungerNGOEntities();
@@ -199,8 +216,13 @@ var db = new ZeroHungerNGOEntities();
 
 				return View(read);
 			}
-
-
+		public ActionResult Logout()
+		{
+			Session.Clear();
+			return RedirectToAction("Login", "Home");
 		}
+	
+
+	}
 	}
     

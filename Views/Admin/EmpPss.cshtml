@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EmpPss</h2>
+
 
 <div>
     <h4>employee</h4>
@@ -46,6 +46,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.password }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "EditEmployees", new { id = Model.password }) |
+    @Html.ActionLink("Back to List", "Dashboard")
 </p>

@@ -148,9 +148,6 @@
     <Compile Include="Models\employee_assignments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\food_items.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Loginmodel.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -168,6 +165,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\restaurant.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\restaurant_food.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
@@ -249,7 +249,6 @@
     <Content Include="Views\Admin\AddRestaurants.cshtml" />
     <Content Include="Views\Admin\DeleteRestaurant.cshtml" />
     <Content Include="Views\Admin\EditRestaurant.cshtml" />
-    <Content Include="Views\Admin\Dashboard.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\_default.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
@@ -258,9 +257,13 @@
     <Content Include="Views\Restaurant\Dashboard.cshtml" />
     <Content Include="Views\Shared\_EmployeeLayout.cshtml" />
     <Content Include="Views\Employee\EmpDashboard.cshtml" />
-    <Content Include="Views\Restaurant\GiveReq.cshtml" />
     <Content Include="Views\Admin\EmpPss.cshtml" />
     <Content Include="Views\Admin\Respass.cshtml" />
+    <Content Include="Views\Restaurant\Donate.cshtml" />
+    <Content Include="Views\Employee\Assignment.cshtml" />
+    <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Admin\Assign.cshtml" />
+    <Content Include="Views\Restaurant\AddFood.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

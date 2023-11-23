@@ -8,14 +8,14 @@
         <EntityTypeShape EntityType="ZeroHungerNGOModel.collection_requests" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ZeroHungerNGOModel.employee_assignments" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ZeroHungerNGOModel.employee" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeroHungerNGOModel.food_items" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ZeroHungerNGOModel.restaurant" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ZeroHungerNGOModel.sysdiagram" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
         <AssociationConnector Association="ZeroHungerNGOModel.FK__collectio__resta__1273C1CD" ManuallyRouted="false" />
         <AssociationConnector Association="ZeroHungerNGOModel.FK__employee___colle__1B0907CE" ManuallyRouted="false" />
-        <AssociationConnector Association="ZeroHungerNGOModel.FK__food_item__colle__15502E78" ManuallyRouted="false" />
         <AssociationConnector Association="ZeroHungerNGOModel.FK__employee___emplo__1A14E395" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ZeroHungerNGOModel.admin" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ZeroHungerNGOModel.restaurant_food" Width="1.5" PointX="3" PointY="6.875" />
+        <AssociationConnector Association="ZeroHungerNGOModel.FK__restauran__resta__5CD6CB2B" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
